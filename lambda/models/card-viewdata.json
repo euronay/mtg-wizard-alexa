@@ -9,7 +9,7 @@
         "set": "Modern Masters 2017",
         "rarity": "Rare",
         "body": "{G}: Exile target card from a graveyard. If it was a creature card, put a +1/+1 counter on Scavenging Ooze and you gain 1 life.",
-        "logoUrl": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/a3f2/18884399174c41eca976c84f35d39d39/APP_ICON?versionId=id75qhVDgwZxt4QkxM_d2rXZoR3x415s&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190620T114357Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190620%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=c656b7dbe1921277c6fa0e16cbe57be7ba7eab57ce0463328ac293347f3922b2",
+        "logoUrl": "https://raw.githubusercontent.com/euronay/mtg-wizard-alexa/master/images/logoW.png",
         "hintText": "Try, \"Alexa, find Magic Card 'Lightning Bolt'\""
     }
 }
