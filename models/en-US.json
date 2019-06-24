@@ -1,0 +1,98 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "mtg wizard",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "hello",
+            "how are you",
+            "say hi world",
+            "say hi",
+            "hi",
+            "say hello world",
+            "say hello"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "SearchCardIntent",
+          "slots": [
+            {
+              "name": "card",
+              "type": "AMAZON.SearchQuery",
+              "samples": [
+                "{card}"
+              ]
+            }
+          ],
+          "samples": [
+            "card named {card}",
+            "find me {card}",
+            "find {card}",
+            "search for {card}"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "SearchCardIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "card",
+              "type": "AMAZON.SearchQuery",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.43938475930.118077080798"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.43938475930.118077080798",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Name a card and I'll try and find it"
+          },
+          {
+            "type": "PlainText",
+            "value": "What do you want to find?"
+          },
+          {
+            "type": "PlainText",
+            "value": "What card are you looking for?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "3"
+}

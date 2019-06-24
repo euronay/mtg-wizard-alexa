@@ -1,0 +1,21 @@
+{
+    "viewData": {
+        "title": "MTG Wizard",
+        "logoUrl": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/a3f2/18884399174c41eca976c84f35d39d39/APP_ICON?versionId=id75qhVDgwZxt4QkxM_d2rXZoR3x415s&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190620T114357Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190620%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=c656b7dbe1921277c6fa0e16cbe57be7ba7eab57ce0463328ac293347f3922b2",
+        "hintText": "Try, \"Alexa, find Magic Card 'Counterspell'\"",
+        "results": [
+                {
+                    "imageUrl": "https://img.scryfall.com/cards/png/en/mm3/134.png?1517813031",
+                    "name": "Scavenging Ooze",
+                    "manaAndType": "{1}{G} Creature - Ooze 2/2",
+                    "set": "Modern Masters 2017"
+                },
+                {
+    				"imageUrl": "https://img.scryfall.com/cards/large/en/cn2/73.jpg?1517813031",
+    				"name": "Adriana, Captain of the Guard",
+    				"set": "Conspiracy: Take the Crown",
+    				"manaAndType": "{3}{R}{W} Legendary Creature — Human Knight 4/4"
+    			}
+            ]
+    }
+}

@@ -1,0 +1,52 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:339361669170:function:62420606-8096-4bfd-bc7f-d8efe60670a5:Release_0"
+        },
+        "interfaces": [
+          {
+            "type":"ALEXA_PRESENTATION_APL"
+          }
+        ]
+      }
+    },
+    "privacyAndCompliance": {
+      "locales": {
+        "en-US": {
+          "privacyPolicyUrl": "https://github.com/euronay/scrybot-mtg/blob/master/PrivacyPolicy.md",
+          "termsOfUseUrl": "https://github.com/euronay/scrybot-mtg/blob/master/TermsConditions.md"
+        }
+      },
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
+    },
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "MTG Wizard",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/a3f2/18884399174c41eca976c84f35d39d39/APP_ICON?versionId=id75qhVDgwZxt4QkxM_d2rXZoR3x415s&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190621T070509Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190621%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ef18dd4362e14d33b6fc360ff5b5bfc9e4a2b6a450067d7aa47ee6425ed3eccf",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ab74/b89a251772ef4a0ba13d06f5da05b6a8/APP_ICON_LARGE?versionId=Smqrfp._N9Pfcxe.41.pHN1PhGB5CcgX&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190621T070509Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86399&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190621%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=949d3b63f8b90e7bdc5dbfdc5ef87b5ce7e14c842d437413931c1cafd173556b",
+          "summary": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
+          "description": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
+          "examplePhrases": [],
+          "keywords": [
+            "Magic",
+            "Gathering",
+            "MTG",
+            "Cards",
+            "TCG",
+            "Trading"
+          ]
+        }
+      },
+      "isAvailableWorldwide": true,
+      "category": "GAME_INFO_AND_ACCESSORY",
+      "distributionCountries": []
+    }
+  }
+}

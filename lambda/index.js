@@ -2,30 +2,61 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
+const Api = require('mtg-wizard-core');
+const Renderer = require('./util/renderer.js');
 
+async function searchCards(query, responseBuilder) {
+    
+    var cards = await Api.searchCards(query);
+    
+    if(cards === null || cards.length === 0){
+        return responseBuilder
+            .speak(`Sorry, I couldn't find any cards named ${query}.`)
+            .getResponse();
+    }
+    else if(cards.length === 1){
+        return Renderer
+            .renderCard(responseBuilder, cards[0])
+            .getResponse();
+    }
+    else {
+        return Renderer
+            .renderCards(responseBuilder, cards)
+            .getResponse();
+    }
+}
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speechText = 'Welcome, you can say Hello or Help. Which would you like to try?';
+        const speechText = 'Welcome, search for any Magic The Gathering card by saying <emphasis level="moderate">Find</emphasis> and then the card name';
         return handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
             .getResponse();
     }
 };
-const HelloWorldIntentHandler = {
+const SearchCardIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+            && (handlerInput.requestEnvelope.request.intent.name === 'SearchCardIntent');
+    },
+    async handle(handlerInput) {
+        const query = handlerInput.requestEnvelope.request.intent.slots.card.value;
+        return searchCards(query, handlerInput.responseBuilder);
+    }
+};
+const TouchIntentHandler = {
+    // handles the user selecting an item in the search results view
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === 'Alexa.Presentation.APL.UserEvent'
+            && handlerInput.requestEnvelope.request.arguments.length > 0
+            && handlerInput.requestEnvelope.request.arguments[0] === 'ItemSelected';
     },
     handle(handlerInput) {
-        const speechText = 'Hello World!';
-        return handlerInput.responseBuilder
-            .speak(speechText)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
+        const query = handlerInput.requestEnvelope.request.arguments[2].name;
+        return searchCards(query, handlerInput.responseBuilder);
     }
 };
 const HelpIntentHandler = {
@@ -34,7 +65,7 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = 'You can say hello to me! How can I help?';
+        const speechText = 'Search for any Magic The Gathering card by saying <emphasis level="moderate">Find</emphasis> and then the card name';
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -93,7 +124,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.message}`);
-        const speechText = `Sorry, I couldn't understand what you said. Please try again.`;
+        const speechText = `Sorry, I couldn't understand what you said. Please try again. ${error.message}`;
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -108,7 +139,8 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelloWorldIntentHandler,
+        SearchCardIntentHandler,
+        TouchIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
