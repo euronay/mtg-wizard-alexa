@@ -5,36 +5,71 @@ const Alexa = require('ask-sdk-core');
 const Api = require('mtg-wizard-core');
 const Renderer = require('./util/renderer.js');
 
-async function searchCards(query, responseBuilder) {
+const defaultUi = require('./ui/default.json');
+const defaultUiData = require('./models/default-viewdata.json');
+
+async function searchCards(query, responseBuilder, aplAvailable) {
     
-    var cards = await Api.searchCards(query);
-    
-    if(cards === null || cards.length === 0){
+    try{
+        var cards = await Api.searchCards(query);
+        
+        if(!cards || cards.length === 0){
+            return responseBuilder
+                .speak(`Sorry, I couldn't find any cards named ${query}.`)
+                .getResponse();
+        }
+        else if(cards.length === 1){
+            return Renderer
+                .renderCard(responseBuilder, cards[0], aplAvailable)
+                .getResponse();
+        }
+        else {
+            return Renderer
+                .renderCards(responseBuilder, cards, aplAvailable)
+                .getResponse();
+        }
+    }
+    catch(err){
         return responseBuilder
             .speak(`Sorry, I couldn't find any cards named ${query}.`)
             .getResponse();
     }
-    else if(cards.length === 1){
-        return Renderer
-            .renderCard(responseBuilder, cards[0])
-            .getResponse();
-    }
-    else {
-        return Renderer
-            .renderCards(responseBuilder, cards)
-            .getResponse();
-    }
 }
+
+async function getCard(cardId, responseBuilder, aplAvailable) {
+    
+    var card = await Api.getCard(cardId);
+        
+    return Renderer
+        .renderCard(responseBuilder, card, aplAvailable)
+        .getResponse();
+}
+
+async function getSpoilers(responseBuilder, aplAvailable){
+    const query = "game%3Apaper+order%3Aspoiled";
+    var cards = await Api.searchCards(query);
+    
+    return Renderer
+            .renderCards(responseBuilder, cards.slice(0,5), aplAvailable)
+            .getResponse();
+}
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
-        return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
+        return (handlerInput.requestEnvelope.request.type === 'LaunchRequest') ||
+            (handlerInput.requestEnvelope.request.type === 'IntentRequest'
+                && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent');
     },
     handle(handlerInput) {
+        const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
         const speechText = 'Welcome, search for any Magic The Gathering card by saying <emphasis level="moderate">Find</emphasis> and then the card name';
-        return handlerInput.responseBuilder
+        let responseBuilder = handlerInput.responseBuilder
             .speak(speechText)
-            .reprompt(speechText)
-            .getResponse();
+            .reprompt(speechText);
+            
+        Renderer.renderDisplay(responseBuilder, defaultUi, defaultUiData, aplAvailable);
+            
+        return responseBuilder.getResponse();
     }
 };
 const SearchCardIntentHandler = {
@@ -43,8 +78,22 @@ const SearchCardIntentHandler = {
             && (handlerInput.requestEnvelope.request.intent.name === 'SearchCardIntent');
     },
     async handle(handlerInput) {
+        const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
         const query = handlerInput.requestEnvelope.request.intent.slots.card.value;
-        return searchCards(query, handlerInput.responseBuilder);
+        
+        return searchCards(query, handlerInput.responseBuilder, aplAvailable);
+    }
+};
+const SelectCardIntentHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+            && (handlerInput.requestEnvelope.request.intent.name === 'SelectCardIntent');
+    },
+    async handle(handlerInput) {
+        const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
+        const cardId = handlerInput.requestEnvelope.request.intent.slots.predefinedCard.resolutions.resolutionsPerAuthority.find(element => element.status.code === "ER_SUCCESS_MATCH").values[0].value.id;
+        
+        return getCard(cardId, handlerInput.responseBuilder, aplAvailable);
     }
 };
 const TouchIntentHandler = {
@@ -55,8 +104,21 @@ const TouchIntentHandler = {
             && handlerInput.requestEnvelope.request.arguments[0] === 'ItemSelected';
     },
     handle(handlerInput) {
-        const query = handlerInput.requestEnvelope.request.arguments[2].name;
-        return searchCards(query, handlerInput.responseBuilder);
+        const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
+        const cardId = JSON.parse(handlerInput.requestEnvelope.request.arguments[2]).id;
+        
+        return getCard(cardId, handlerInput.responseBuilder, aplAvailable);
+    }
+};
+const SpoilersIntentHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+            && (handlerInput.requestEnvelope.request.intent.name === 'SpoilersIntent');
+    },
+    async handle(handlerInput) {
+        const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
+        
+        return getSpoilers(handlerInput.responseBuilder, aplAvailable);
     }
 };
 const HelpIntentHandler = {
@@ -123,8 +185,8 @@ const ErrorHandler = {
         return true;
     },
     handle(handlerInput, error) {
-        console.log(`~~~~ Error handled: ${error.message}`);
-        const speechText = `Sorry, I couldn't understand what you said. Please try again. ${error.message}`;
+        console.log(`~~~~ Error handled: ${error.message} ${JSON.stringify(handlerInput)}`);
+        const speechText = `Sorry, I couldn't understand what you said. Please try again.`; // ${error.message} ${JSON.stringify(handlerInput)}`;
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -140,7 +202,9 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         SearchCardIntentHandler,
+        SelectCardIntentHandler,
         TouchIntentHandler,
+        SpoilersIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,

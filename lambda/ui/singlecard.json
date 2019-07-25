@@ -149,7 +149,8 @@
                                         "width": "70vw",
                                         "height": "80vh",
                                         "scale": "best-fit",
-                                        "align": "center"
+                                        "align": "center",
+                                        "borderRadius": "2.5vh"
                                     }
                                 ]
                             }
@@ -219,7 +220,8 @@
                                 "width": 340,
                                 "height": "68vh",
                                 "scale": "best-fit",
-                                "align": "center"
+                                "align": "center",
+                                "borderRadius": "2.8vh"
                             }
                         ]
                     },

@@ -10,6 +10,6 @@
         "rarity": "Rare",
         "body": "{G}: Exile target card from a graveyard. If it was a creature card, put a +1/+1 counter on Scavenging Ooze and you gain 1 life.",
         "logoUrl": "https://raw.githubusercontent.com/euronay/mtg-wizard-alexa/master/images/logoW.png",
-        "hintText": "Try, \"Alexa, find Magic Card 'Lightning Bolt'\""
+        "hintText": "Try, \"Alexa, find Magic Card 'Eternal Witness'\""
     }
 }

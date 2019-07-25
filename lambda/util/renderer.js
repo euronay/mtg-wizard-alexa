@@ -7,7 +7,7 @@ const searchResultViewData = require('../models/searchresults-viewdata.json');
 
 module.exports = class Renderer {
 
-    static renderCard(responseBuilder, card){
+    static renderCard(responseBuilder, card, useApl){
 
         let data = Object.assign({}, cardViewData);
 
@@ -20,64 +20,94 @@ module.exports = class Renderer {
         data.viewData.usd = card.usd;
         data.viewData.usd_foil = card.usd;
         data.viewData.eur = card.eur;
+        
+        let speech = `I found ${card.name} from ${card.set_name}. ${Speaker.speak(card)}`;
+        
+        // clear dynamic entities once we find a card
+        let dynamicEntities = {
+            type: "Dialog.UpdateDynamicEntities",
+            updateBehavior: "REPLACE",
+            types: [
+                {
+                    name: "PredefinedCard",
+                    values: []
+                }
+            ]
+        };
 
         responseBuilder
-            .speak(`I found ${card.name} from ${card.set_name}. ${Speaker.speak(card)}`)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .addDirective({
-                type: 'Alexa.Presentation.APL.RenderDocument',
-                version: '1.0',
-                document: singleCardUi,
-                datasources: data
-            });
-        
+            .speak(speech)
+            .addDirective(dynamicEntities);
+            
+        this.renderDisplay(responseBuilder, singleCardUi, data, useApl);
+            
         return responseBuilder;
     }
 
-    static renderCards(responseBuilder, cards)
+    static renderCards(responseBuilder, cards, useApl)
     {
+        const MAX_CARDS_TO_RENDER = 20;
+        
         let data = Object.assign({}, searchResultViewData);
 
         let cardsToSpeak = "\n";
 
-        data.viewData.results = cards.map(card => {
+        data.viewData.results = cards.slice(0,MAX_CARDS_TO_RENDER).map(card => {
 
             cardsToSpeak += `${card.name} from ${card.set_name},\n`; 
 
             return {
-                "imageUrl": card.getImage(),
-                "name": card.getDisplayName(),
-                "set": card.set_name,
-                "manaAndType": card.getManaCostAndType()
+                imageUrl: card.getImage(),
+                name: card.getDisplayName(),
+                id: card.id,
+                set: card.set_name,
+                manaAndType: card.getManaCostAndType()
             };
         });
 
         let speech = ((cards.length <= 5) ? `I found ${cardsToSpeak}. Which one are you interested in?` : `I found ${cards.length} cards. Can you be more specific?`  )
 
+        let dynamicEntities = {
+            type: "Dialog.UpdateDynamicEntities",
+            updateBehavior: "REPLACE",
+            types: [
+                {
+                    name: "PredefinedCard",
+                    values: cards.slice(0,MAX_CARDS_TO_RENDER).map(card => ({
+                        id: card.id,
+                        name: {
+                            value: card.name,
+                            // Important - the maximum number of synonyms is 100 total. The number of cards returned must not exceed
+                            // (100 / number of synonyms) = 25
+                            synonyms: [card.name, `${card.name} from ${card.set}`, `${card.name} from ${card.set_name}`]
+                            }
+                        }))
+                }
+            ]
+        };
+        
 
         responseBuilder
             .speak(speech)
-            .reprompt('Which card do you want to know about?')
-            .addDirective({
+            .addDirective(dynamicEntities);
+        
+        this.renderDisplay(responseBuilder, searchResultsUi, data, useApl);
+        
+        return responseBuilder;
+    }
+    
+    static renderDisplay(responseBuilder, ui, data, useApl)
+    {
+        if(useApl){
+            responseBuilder.addDirective({
                 type: 'Alexa.Presentation.APL.RenderDocument',
                 version: '1.0',
-                document: searchResultsUi,
+                document: ui,
                 datasources: data
             });
+        }
         
         return responseBuilder;
     }
 
-    // static renderListItem(app, card, showSet){
-    //     var listItem = app.buildOptionItem(card.id,
-    //     [card.name])
-    //     .setTitle(card.name)
-    //     .setDescription(`${card.getSetAndRarity()}  \n${card.getManaCostAndType()}`)
-    //     .setImage(card.getThumbnail(), card.name);
-
-    //     if(showSet)
-    //         listItem.setTitle(`${card.name} (${card.set})`);
-
-    //     return listItem;
-    // }
 }

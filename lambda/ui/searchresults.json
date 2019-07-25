@@ -233,7 +233,8 @@
                             "width": 80,
                             "spacing": 15,
                             "scale": "best-fit",
-                            "align": "top"
+                            "align": "top",
+                            "borderRadius": "0.8vh"
                         },
                         {
                             "type": "Container",
@@ -294,7 +295,8 @@
                             "width": 100,
                             "align": "top",
                             "spacing": 50,
-                            "scale": "best-fit"
+                            "scale": "best-fit",
+                            "borderRadius": "0.8vh"
                         },
                         {
                             "type": "Container",

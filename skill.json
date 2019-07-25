@@ -7,7 +7,7 @@
         },
         "interfaces": [
           {
-            "type":"ALEXA_PRESENTATION_APL"
+            "type": "ALEXA_PRESENTATION_APL"
           }
         ]
       }
@@ -29,11 +29,35 @@
       "locales": {
         "en-US": {
           "name": "MTG Wizard",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/a3f2/18884399174c41eca976c84f35d39d39/APP_ICON?versionId=id75qhVDgwZxt4QkxM_d2rXZoR3x415s&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190621T070509Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190621%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ef18dd4362e14d33b6fc360ff5b5bfc9e4a2b6a450067d7aa47ee6425ed3eccf",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ab74/b89a251772ef4a0ba13d06f5da05b6a8/APP_ICON_LARGE?versionId=Smqrfp._N9Pfcxe.41.pHN1PhGB5CcgX&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190621T070509Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86399&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190621%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=949d3b63f8b90e7bdc5dbfdc5ef87b5ce7e14c842d437413931c1cafd173556b",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190725T131710Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=733e05d9edd57e9a684e32a9a3d31cc4e11b1b621144320604e9ef9181d95b4a",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190725T131710Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1a8e1fb9be2477a2d9bbdbd9da64a48b169f3381ea194edb42ab314323629910",
           "summary": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "description": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
-          "examplePhrases": [],
+          "examplePhrases": [
+            "Alexa, talk to MTG Wizard",
+            "Alexa, ask MTG Wizard to find \"Lightning Bolt\"",
+            "Alexa, ask MTG Wizard to search for \"Counterspell\""
+          ],
+          "keywords": [
+            "Magic",
+            "Gathering",
+            "MTG",
+            "Cards",
+            "TCG",
+            "Trading"
+          ]
+        },
+        "en-GB": {
+          "name": "MTG Wizard",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190725T131710Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=733e05d9edd57e9a684e32a9a3d31cc4e11b1b621144320604e9ef9181d95b4a",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190725T131710Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1a8e1fb9be2477a2d9bbdbd9da64a48b169f3381ea194edb42ab314323629910",
+          "summary": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
+          "description": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
+          "examplePhrases": [
+            "Alexa, talk to MTG Wizard",
+            "Alexa, ask MTG Wizard to find \"Lightning Bolt\"",
+            "Alexa, ask MTG Wizard to search for \"Counterspell\""
+          ],
           "keywords": [
             "Magic",
             "Gathering",
@@ -45,6 +69,7 @@
         }
       },
       "isAvailableWorldwide": true,
+      "testingInstructions": "Ask to search for any Magic the Gathering card name. Examples: \"Counterspell\", \"Lightning Bold\" ,\"Omnath\"\nIf more than one card is found, the user has to simply ask to \"Find {card}\" again or touch the list from the display.",
       "category": "GAME_INFO_AND_ACCESSORY",
       "distributionCountries": []
     }
