@@ -18,6 +18,8 @@ module.exports = class Speaker {
         .replace(/{B\/P}/g, "{Phyrexian Black}")
         .replace(/{R\/P}/g, "{Phyrexian Red}")
         .replace(/{G\/P}/g, "{Phyrexian Green}")
-        .replace(/{E}/g, "{Energy}");
+        .replace(/{E}/g, "{Energy}")
+        .replace(/\d/g, '{$&}')
+        .replace(/\*/g, "star");
     }
 }

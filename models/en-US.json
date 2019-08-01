@@ -16,19 +16,6 @@
           "samples": []
         },
         {
-          "name": "HelloWorldIntent",
-          "slots": [],
-          "samples": [
-            "hello",
-            "how are you",
-            "say hi world",
-            "say hi",
-            "hi",
-            "say hello world",
-            "say hello"
-          ]
-        },
-        {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
         },
@@ -68,6 +55,9 @@
           "name": "SpoilersIntent",
           "slots": [],
           "samples": [
+            "find preview cards",
+            "find spoilers",
+            "find latest spoilers",
             "show me spoilers",
             "show me the latest spoilers",
             "show me upcoming magic cards",
@@ -83,6 +73,10 @@
             "show me the latest previews",
             "find the latest spoilers"
           ]
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
         }
       ],
       "types": [
@@ -5045,14 +5039,7 @@
           "values": [
             {
               "name": {
-                "value": "Lightning Bolt",
-                "synonyms": [
-                  "Lightning Bolt from Modern Masters 2015",
-                  "Modern Masters 2015",
-                  "M15",
-                  "Lightning Bolt from M15",
-                  "LIghtning Bolt"
-                ]
+                "value": "SDFSD"
               }
             }
           ],
@@ -5090,7 +5077,13 @@
               "confirmationRequired": false,
               "prompts": {
                 "elicitation": "Elicit.Slot.766442409851.842252229632"
-              }
+              },
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.1073198694367.300130257360.65372451903"
+                }
+              ]
             }
           ]
         }
@@ -5120,15 +5113,24 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "What card do you wnat to know about?"
+            "value": "What card do you want to know about?"
           },
           {
             "type": "PlainText",
             "value": "Which card are you interested in?"
           }
         ]
+      },
+      {
+        "id": "Slot.Validation.1073198694367.300130257360.65372451903",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Name the card you are interested in"
+          }
+        ]
       }
     ]
   },
-  "version": "3"
+  "version": "11"
 }

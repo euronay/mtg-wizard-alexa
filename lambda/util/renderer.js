@@ -21,7 +21,7 @@ module.exports = class Renderer {
         data.viewData.usd_foil = card.usd;
         data.viewData.eur = card.eur;
         
-        let speech = `I found ${card.name} from ${card.set_name}. ${Speaker.speak(card)}`;
+        let speech = `${card.name} from ${card.set_name}. ${Speaker.speak(card)}`;
         
         // clear dynamic entities once we find a card
         let dynamicEntities = {
@@ -65,7 +65,8 @@ module.exports = class Renderer {
             };
         });
 
-        let speech = ((cards.length <= 5) ? `I found ${cardsToSpeak}. Which one are you interested in?` : `I found ${cards.length} cards. Can you be more specific?`  )
+        let speech = ((cards.length <= 5) ? `I found ${cardsToSpeak}. Which one are you interested in?` : 
+            `I found ${cards.length} cards. Can you be more specific?`  )
 
         let dynamicEntities = {
             type: "Dialog.UpdateDynamicEntities",
@@ -73,13 +74,13 @@ module.exports = class Renderer {
             types: [
                 {
                     name: "PredefinedCard",
-                    values: cards.slice(0,MAX_CARDS_TO_RENDER).map(card => ({
+                    values: cards.slice(0,MAX_CARDS_TO_RENDER).map((card, index) => ({
                         id: card.id,
                         name: {
                             value: card.name,
                             // Important - the maximum number of synonyms is 100 total. The number of cards returned must not exceed
-                            // (100 / number of synonyms) = 25
-                            synonyms: [card.name, `${card.name} from ${card.set}`, `${card.name} from ${card.set_name}`]
+                            // (100 / number of synonyms [5]) = 20
+                            synonyms: [card.name.replace(/[^0-9a-zA-Z ]/g, ''), `${card.name.replace(/[^0-9a-zA-Z ]/g, '')} from ${card.set}`, `${card.name.replace(/[^0-9a-zA-Z ]/g, '')} from ${card.set_name}`, `${(index + 1)}`]
                             }
                         }))
                 }
@@ -89,6 +90,7 @@ module.exports = class Renderer {
 
         responseBuilder
             .speak(speech)
+            .withShouldEndSession(false)
             .addDirective(dynamicEntities);
         
         this.renderDisplay(responseBuilder, searchResultsUi, data, useApl);

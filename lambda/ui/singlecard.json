@@ -139,18 +139,50 @@
                                 "type": "Container",
                                 "direction": "column",
                                 "alignItems": "center",
-                                "paddingLeft": "70dp",
-                                "paddingRight": "70dp",
-                                "paddingTop": "10vh",
+                                "justifyContent": "end",
                                 "items": [
+                                    {
+                                        "headerTitle": "${payload.viewData.title}",
+                                        "headerAttributionImage": "${payload.viewData.logoUrl}",
+                                        "type": "AlexaHeader",
+                                        "top": "-30dp",
+                                        "grow": "0"
+                                    },
                                     {
                                         "type": "Image",
                                         "source": "${payload.viewData.imageUrl}",
-                                        "width": "70vw",
+                                        "width": "80vw",
                                         "height": "80vh",
+                                        "top": "-30dp",
                                         "scale": "best-fit",
-                                        "align": "center",
                                         "borderRadius": "2.5vh"
+                                    },
+                                    {
+                                        "type": "Text",
+                                        "style": "textStyleBody",
+                                        "text": "${payload.viewData.name}"
+                                    },
+                                    {
+                                        "type": "Text",
+                                        "style": "textStylePrimary",
+                                        "width": "70vw",
+                                        "color": "@colorTextSecondary",
+                                        "text": "${payload.viewData.set}"
+                                    },
+                                    {
+                                        "type": "Text",
+                                        "style": "textStylePrimary",
+                                        "width": "70vw",
+                                        "paddingBottom": "10dp",
+                                        "text": "${payload.viewData.manaAndType}"
+                                    },
+                                    {
+                                        "type": "Text",
+                                        "text": "${payload.viewData.body}",
+                                        "spacing": "@spacingSmall",
+                                        "paddingBottom": "20vh",
+                                        "width": "70vw",
+                                        "style": "textStylePrimary"
                                     }
                                 ]
                             }

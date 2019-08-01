@@ -129,6 +129,7 @@
             {
                 "type": "Container",
                 "height": "100vh",
+                "width": "100vw",
                 "items": [
                     {
                         "type": "Image",
@@ -141,6 +142,7 @@
                             {
                                 "type": "Blur",
                                 "radius": "5dp"
+                                
                             }
                         ]
                     },

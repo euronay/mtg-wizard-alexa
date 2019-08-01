@@ -31,7 +31,7 @@ async function searchCards(query, responseBuilder, aplAvailable) {
     }
     catch(err){
         return responseBuilder
-            .speak(`Sorry, I couldn't find any cards named ${query}.`)
+            .speak(`Sorry, I had trouble searching for ${query}.`)
             .getResponse();
     }
 }
@@ -53,19 +53,17 @@ async function getSpoilers(responseBuilder, aplAvailable){
             .renderCards(responseBuilder, cards.slice(0,5), aplAvailable)
             .getResponse();
 }
-
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
-        return (handlerInput.requestEnvelope.request.type === 'LaunchRequest') ||
-            (handlerInput.requestEnvelope.request.type === 'IntentRequest'
-                && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent');
+        return (handlerInput.requestEnvelope.request.type === 'LaunchRequest');
     },
     handle(handlerInput) {
         const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
-        const speechText = 'Welcome, search for any Magic The Gathering card by saying <emphasis level="moderate">Find</emphasis> and then the card name';
+        const speechText = 'Welcome, search for any Magic The Gathering card by saying <break strength="weak"/><emphasis level="strong">Find</emphasis><break strength="weak"/> and then the card name';
+        const repromptText = 'Say the word <break strength="weak"/><emphasis level="strong">Find</emphasis><break strength="weak"/> and then the card name you want to seach for.';
         let responseBuilder = handlerInput.responseBuilder
             .speak(speechText)
-            .reprompt(speechText);
+            .reprompt(repromptText);
             
         Renderer.renderDisplay(responseBuilder, defaultUi, defaultUiData, aplAvailable);
             
@@ -105,7 +103,7 @@ const TouchIntentHandler = {
     },
     handle(handlerInput) {
         const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
-        const cardId = JSON.parse(handlerInput.requestEnvelope.request.arguments[2]).id;
+        const cardId = handlerInput.requestEnvelope.request.arguments[2].id;
         
         return getCard(cardId, handlerInput.responseBuilder, aplAvailable);
     }
@@ -127,11 +125,25 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = 'Search for any Magic The Gathering card by saying <emphasis level="moderate">Find</emphasis> and then the card name';
+        const speechText = 'Search for any Magic The Gathering card by saying <break strength="weak"/><emphasis level="strong">Find</emphasis><break strength="weak"/> and then the card name. ' + 
+            'You can also ask me for the latest spoilers.';
 
         return handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
+            .getResponse();
+    }
+};
+const FallbackIntentHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+            && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.FallbackIntent';
+    },
+    handle(handlerInput) {
+        const speechText = `Sorry, I didn't catch that. Could you ask that again?`;
+        
+        return handlerInput.responseBuilder
+            .speak(speechText)
             .getResponse();
     }
 };
@@ -206,6 +218,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         TouchIntentHandler,
         SpoilersIntentHandler,
         HelpIntentHandler,
+        FallbackIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler) // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers

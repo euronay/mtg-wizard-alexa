@@ -1,6 +1,7 @@
 {
     "type": "APL",
-    "version": "1.0",
+    "version": "1.1",
+    "settings": {},
     "theme": "dark",
     "import": [
         {
@@ -136,8 +137,104 @@
             ]
         }
     },
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
     "layouts": {
-        "ListTemplate1": {
+        "FullHorizontalListItem": {
+            "parameters": [
+                "listLength",
+                "image",
+                "primaryText",
+                "secondaryText"
+            ],
+            "item": [
+                {
+                    "type": "Container",
+                    "width": "100vh",
+                    "height": "100vh",
+                    "alignItems": "center",
+                    "justifyContent": "end",
+                    "items": [
+                        {
+                            "type": "AlexaHeader",
+                            "headerTitle": "${title}",
+                            "headerAttributionImage": "${logo}",
+                            "top": "0vh",
+                            "grow": 0
+                        },
+                        {
+                            "type": "Image",
+                            "width": "70vw",
+                            "height": "45vh",
+                            "source": "${data.imageUrl}",
+                            "scale": "best-fit",
+                            "borderRadius": "2.5vh"
+                        },
+                        {
+                            "type": "Text",
+                            "style": "textStyleBody",
+                            "maxLines": 1,
+                            "text": "${primaryText}"
+                        },
+                        {
+                            "type": "Text",
+                            "style": "textStyleDetails",
+                            "text": "${secondaryText}"
+                        },
+                        {
+                            "type": "Text",
+                            "text": "${ordinal} | ${listLength}",
+                            "paddingBottom": "20dp",
+                            "color": "white",
+                            "spacing": "5dp"
+                        }
+                    ]
+                }
+            ]
+        },
+        "HorizontalListItem": {
+            "parameters": [
+                "primaryText",
+                "secondaryText",
+                "image"
+            ],
+            "item": [
+                {
+                    "type": "Container",
+                    "minWidth": "312",
+                    "maxWidth": "528",
+                    "height": "100%",
+                    "paddingLeft": "16",
+                    "paddingRight": "16",
+                    "alignItems": "center",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "width": "40vh",
+                            "height": "40vh",
+                            "source": "${image}",
+                            "borderRadius": "1.4vh"
+                        },
+                        {
+                            "type": "Text",
+                            "style": "textStyleSecondary",
+                            "maxLines": 1,
+                            "text": "${primaryText}",
+                            "spacing": "12"
+                        },
+                        {
+                            "type": "Text",
+                            "style": "textStyleDetails",
+                            "color": "@colorTextSecondary",
+                            "text": "${secondaryText}",
+                            "spacing": "4"
+                        }
+                    ]
+                }
+            ]
+        },
+        "ListTemplate2": {
             "parameters": [
                 "backgroundImage",
                 "title",
@@ -145,34 +242,20 @@
                 "hintText",
                 "listData"
             ],
-            "item": [
+            "items": [
                 {
+                    "when": "${viewport.shape == 'round'}",
                     "type": "Container",
-                    "width": "100vw",
-                    "height": "100vh",
-                    "direction": "column",
+                    "height": "100%",
+                    "width": "100%",
                     "items": [
                         {
-                            "type": "Image",
-                            "source": "${backgroundImage}",
-                            "scale": "best-fill",
-                            "width": "100vw",
-                            "height": "100vh",
-                            "position": "absolute"
-                        },
-                        {
-                            "headerTitle": "${title}",
-                            "headerAttributionImage": "${logo}",
-                            "type": "AlexaHeader"
-                        },
-                        {
                             "type": "Sequence",
-                            "maxHeight": "80vh",
-                            "paddingLeft": "@marginLeft",
-                            "paddingRight": "@marginRight",
+                            "scrollDirection": "horizontal",
                             "data": "${listData}",
+                            "height": "100%",
+                            "width": "100%",
                             "numbered": true,
-                            "scrollDirection": "vertical",
                             "item": {
                                 "type": "TouchWrapper",
                                 "onPress": [{
@@ -183,156 +266,71 @@
                                     "${data}"
                                   ]
                                 }],
-                                "item": {
-                                    "type": "VerticalListItem",
-                                    "image": "${data.imageUrl}",
-                                    "primaryText": "${data.name}",
-                                    "secondaryText": "${data.set}",
-                                    "tertiaryText": "${data.manaAndType}"
-                                }
-                            },
-                            "grow": 1
-                        },
-                        {
-                            "hintText": "${payload.viewData.hintText}",
-                            "type": "AlexaFooter",
-                            "when": "${@viewportSizeClass >= @viewportSizeLarge}"
-                        }
-                    ]
-                }
-            ]
-        },
-        "VerticalListItem": {
-            "parameters": [
-                "primaryText",
-                "secondaryText",
-                "tertiaryText",
-                "image"
-            ],
-            "item": [
-                {
-                    "type": "Container",
-                    "when": "${viewport.shape == 'round'}",
-                    "width": "500",
-                    "height": "110",
-                    "alignItems": "center",
-                    "direction": "row",
-                    "items": [
-                        {
-                            "type": "Text",
-                            "text": "${ordinal}",
-                            "paddingBottom": "20dp",
-                            "color": "white",
-                            "spacing": "5dp"
-                        },
-                        {
-                            "type": "Image",
-                            "when": "${image}",
-                            "source": "${image}",
-                            "height": 100,
-                            "width": 80,
-                            "spacing": 15,
-                            "scale": "best-fit",
-                            "align": "top",
-                            "borderRadius": "0.8vh"
-                        },
-                        {
-                            "type": "Container",
-                            "direction": "column",
-                            "spacing": 25,
-                            "items": [
-                                {
-                                    "type": "Text",
-                                    "text": "<b>${primaryText}</b>",
-                                    "style": "textStyleDetail",
-                                    "grow": 1,
-                                    "shrink": 1,
-                                    "fontWeight": "300",
-                                    "maxLines": 1
-                                },
-                                {
-                                    "type": "Text",
-                                    "text": "${secondaryText}",
-                                    "style": "textStyleCaption",
-                                    "color": "@colorTextSecondary",
-                                    "fontWeight": "300",
-                                    "grow": 1,
-                                    "shrink": 1,
-                                    "maxLines": 1
-                                },
-                                {
-                                    "type": "Text",
-                                    "text": "${tertiaryText}",
-                                    "style": "textStyleDetails",
-                                    "fontWeight": "300",
-                                    "grow": 1,
-                                    "shrink": 1,
-                                    "maxLines": 1
-                                }
-                            ]
+                                "item": [
+                                    {
+                                        "listLength": "${payload.viewData.results.length}",
+                                        "image": "${data.imageUrl}",
+                                        "primaryText": "${data.name}",
+                                        "secondaryText": "${data.set}",
+                                        "type": "FullHorizontalListItem"
+                                    }
+                                ]
+                            }
                         }
                     ]
                 },
                 {
                     "type": "Container",
-                    "width": "90vw",
-                    "height": "120",
-                    "alignItems": "center",
-                    "direction": "row",
+                    "height": "100vh",
+                    "width": "100vw",
                     "items": [
                         {
-                            "type": "Text",
-                            "text": "${ordinal}",
-                            "paddingBottom": "20dp",
-                            "color": "white",
-                            "spacing": "5dp"
-                        },
-                        {
                             "type": "Image",
-                            "when": "${image}",
-                            "source": "${image}",
-                            "height": 100,
-                            "width": 100,
-                            "align": "top",
-                            "spacing": 50,
-                            "scale": "best-fit",
-                            "borderRadius": "0.8vh"
+                            "source": "${backgroundImage}",
+                            "scale": "best-fill",
+                            "width": "100vw",
+                            "height": "100vh",
+                            "position": "absolute"
                         },
                         {
-                            "type": "Container",
-                            "spacing": 30,
-                            "width": "90vw",
-                            "direction": "column",
-                            "items": [
-                                {
-                                    "type": "Text",
-                                    "text": "${primaryText}",
-                                    "style": "textStyleBody",
-                                    "fontWeight": "300",
-                                    "grow": 1,
-                                    "shrink": 1,
-                                    "maxLines": 1
-                                },
-                                {
-                                    "type": "Text",
-                                    "style": "textStyleDetails",
-                                    "color": "@colorTextSecondary",
-                                    "maxLines": 1,
-                                    "text": "${secondaryText}",
-                                    "fontWeight": "300",
-                                    "grow": 1,
-                                    "shrink": 1
-                                },
-                                {
-                                    "type": "Text",
-                                    "text": "${tertiaryText}",
-                                    "style": "textStyleDetails",
-                                    "fontWeight": "300",
-                                    "grow": 1,
-                                    "shrink": 1,
-                                    "maxLines": 1
-                                }
-                            ]
+                            "type": "AlexaHeader",
+                            "headerTitle": "${title}",
+                            "headerAttributionImage": "${logo}"
+                        },
+                        {
+                            "type": "Sequence",
+                            "scrollDirection": "horizontal",
+                            "paddingLeft": "@marginLeft",
+                            "paddingRight": "@marginRight",
+                            "data": "${listData}",
+                            "height": "70vh",
+                            "width": "100%",
+                            "numbered": true,
+                            "item": {
+                                "type": "TouchWrapper",
+                                "onPress": [{
+                                  "type": "SendEvent",
+                                  "arguments": [
+                                    "ItemSelected",
+                                    "${ordinal}",
+                                    "${data}"
+                                  ]
+                                }],
+                                "item": [
+                                    {
+                                        "primaryText": "${data.name}",
+                                        "secondaryText": "${data.set}",
+                                        "image": "${data.imageUrl}",
+                                        "type": "HorizontalListItem"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "hintText": "${hintText}",
+                            "type": "AlexaFooter",
+                            "position": "absolute",
+                            "top": "85vh"
                         }
                     ]
                 }
@@ -345,11 +343,12 @@
         ],
         "item": [
             {
-                "type": "ListTemplate1",
-                "backgroundImage": "${payload.listTemplate1Metadata.backgroundImage.sources[0].url}",
+                "backgroundImage": "${payload.viewData.backgroundUrl}",
                 "title": "${payload.viewData.title}",
                 "logo": "${payload.viewData.logoUrl}",
-                "listData": "${payload.viewData.results}"
+                "hintText": "${payload.viewData.hintText}",
+                "listData": "${payload.viewData.results}",
+                "type": "ListTemplate2"
             }
         ]
     }

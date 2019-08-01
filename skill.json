@@ -17,6 +17,10 @@
         "en-US": {
           "privacyPolicyUrl": "https://github.com/euronay/scrybot-mtg/blob/master/PrivacyPolicy.md",
           "termsOfUseUrl": "https://github.com/euronay/scrybot-mtg/blob/master/TermsConditions.md"
+        },
+        "en-GB": {
+          "privacyPolicyUrl": "https://github.com/euronay/scrybot-mtg/blob/master/PrivacyPolicy.md",
+          "termsOfUseUrl": "https://github.com/euronay/scrybot-mtg/blob/master/TermsConditions.md"
         }
       },
       "allowsPurchases": false,
@@ -29,12 +33,12 @@
       "locales": {
         "en-US": {
           "name": "MTG Wizard",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190725T131710Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=733e05d9edd57e9a684e32a9a3d31cc4e11b1b621144320604e9ef9181d95b4a",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190725T131710Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1a8e1fb9be2477a2d9bbdbd9da64a48b169f3381ea194edb42ab314323629910",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190801T115637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190801%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=420c824ec79fbcf7b5ce73d7c3283bcb7e5d68df0a3bcaa2cbd004bff998b8c7",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190801T115637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190801%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0375aa3df86f3af66a93bafb0c0be13e7b3241d35b4fde9c9fa417b6492ca5c6",
           "summary": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "description": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "examplePhrases": [
-            "Alexa, talk to MTG Wizard",
+            "Alexa, open MTG Wizard",
             "Alexa, ask MTG Wizard to find \"Lightning Bolt\"",
             "Alexa, ask MTG Wizard to search for \"Counterspell\""
           ],
@@ -49,12 +53,12 @@
         },
         "en-GB": {
           "name": "MTG Wizard",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190725T131710Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=733e05d9edd57e9a684e32a9a3d31cc4e11b1b621144320604e9ef9181d95b4a",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190725T131710Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1a8e1fb9be2477a2d9bbdbd9da64a48b169f3381ea194edb42ab314323629910",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190801T115637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190801%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=420c824ec79fbcf7b5ce73d7c3283bcb7e5d68df0a3bcaa2cbd004bff998b8c7",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190801T115637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190801%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0375aa3df86f3af66a93bafb0c0be13e7b3241d35b4fde9c9fa417b6492ca5c6",
           "summary": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "description": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "examplePhrases": [
-            "Alexa, talk to MTG Wizard",
+            "Alexa, open MTG Wizard",
             "Alexa, ask MTG Wizard to find \"Lightning Bolt\"",
             "Alexa, ask MTG Wizard to search for \"Counterspell\""
           ],
