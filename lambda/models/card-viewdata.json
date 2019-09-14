@@ -1,15 +1,15 @@
 {
     "viewData": {
         "title": "MTG Wizard",
-        "image": {
-            "url": "https://img.scryfall.com/cards/png/en/mm3/134.png?1517813031"
-        },
+        "imageUrl": "https://img.scryfall.com/cards/png/en/mm3/134.png?1517813031",
         "name": "Scavenging Ooze",
         "manaAndType": "{1}{G} Creature - Ooze 2/2",
         "set": "Modern Masters 2017",
         "rarity": "Rare",
         "body": "{G}: Exile target card from a graveyard. If it was a creature card, put a +1/+1 counter on Scavenging Ooze and you gain 1 life.",
+        "price": "USD 2.34 / EUR 2.00",
         "logoUrl": "https://raw.githubusercontent.com/euronay/mtg-wizard-alexa/master/images/logoW.png",
+        "backgroundImageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f90cc446-9375-4b0d-9a59-9629e02175c6/dbsopl0-a52a2f05-9326-4260-b8da-f26930ab2620.png/v1/fill/w_1024,h_683,q_80,strp/path_by_nekuro3_dbsopl0-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjgzIiwicGF0aCI6IlwvZlwvZjkwY2M0NDYtOTM3NS00YjBkLTlhNTktOTYyOWUwMjE3NWM2XC9kYnNvcGwwLWE1MmEyZjA1LTkzMjYtNDI2MC1iOGRhLWYyNjkzMGFiMjYyMC5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.Dom9nAl8DfxqijwmvaS9see6e75TKifTlkqqK3qGvFA",
         "hintText": "Try, \"Alexa, find Magic Card 'Eternal Witness'\""
     }
 }

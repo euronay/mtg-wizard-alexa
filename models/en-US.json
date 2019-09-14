@@ -24,31 +24,27 @@
           "slots": [
             {
               "name": "card",
-              "type": "AMAZON.SearchQuery",
-              "samples": [
-                "find {card}",
-                "{card}"
-              ]
-            }
-          ],
-          "samples": [
-            "find magic card {card}",
-            "card named {card}",
-            "find me {card}",
-            "find {card}",
-            "search for {card}"
-          ]
-        },
-        {
-          "name": "SelectCardIntent",
-          "slots": [
+              "type": "AMAZON.SearchQuery"
+            },
             {
               "name": "predefinedCard",
               "type": "PredefinedCard"
             }
           ],
           "samples": [
-            "{predefinedCard}"
+            "search",
+            "find",
+            "find magic card {predefinedCard}",
+            "card named {predefinedCard}",
+            "find me {predefinedCard}",
+            "find {predefinedCard}",
+            "search for {predefinedCard}",
+            "{predefinedCard}",
+            "find magic card {card}",
+            "card named {card}",
+            "find me {card}",
+            "find {card}",
+            "search for {card}"
           ]
         },
         {
@@ -102,31 +98,20 @@
             {
               "name": "card",
               "type": "AMAZON.SearchQuery",
-              "elicitationRequired": true,
+              "elicitationRequired": false,
               "confirmationRequired": false,
-              "prompts": {
-                "elicitation": "Elicit.Slot.43938475930.118077080798"
-              }
-            }
-          ]
-        },
-        {
-          "name": "SelectCardIntent",
-          "confirmationRequired": false,
-          "prompts": {},
-          "slots": [
+              "prompts": {}
+            },
             {
               "name": "predefinedCard",
               "type": "PredefinedCard",
-              "elicitationRequired": true,
+              "elicitationRequired": false,
               "confirmationRequired": false,
-              "prompts": {
-                "elicitation": "Elicit.Slot.766442409851.842252229632"
-              },
+              "prompts": {},
               "validations": [
                 {
                   "type": "hasEntityResolutionMatch",
-                  "prompt": "Slot.Validation.1073198694367.300130257360.65372451903"
+                  "prompt": "Slot.Validation.380024490269.510022862189.648575742563"
                 }
               ]
             }
@@ -174,8 +159,17 @@
             "value": "Name the card you are interested in"
           }
         ]
+      },
+      {
+        "id": "Slot.Validation.380024490269.510022862189.648575742563",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Name the card you are interested in"
+          }
+        ]
       }
     ]
   },
-  "version": "33"
+  "version": "35"
 }

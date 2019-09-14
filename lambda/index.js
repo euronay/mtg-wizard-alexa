@@ -1,56 +1,63 @@
-// This sample demonstrates handling intents from an Alexa skill using the Alexa Skills Kit SDK (v2).
-// Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
-// session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 const Api = require('mtg-wizard-core');
+
 const Renderer = require('./util/renderer.js');
 
-const defaultUi = require('./ui/default.json');
-const defaultUiData = require('./models/default-viewdata.json');
+var strings = require('./util/strings.js').indexStrings;
 
-async function searchCards(query, responseBuilder, aplAvailable) {
+async function searchCards(query, responseBuilder, aplAvailable, locale) {
     
     try{
-        var cards = await Api.searchCards(query);
+
+        let fullQuery = query + '&game:paper';
         
-        if(!cards || cards.length === 0){
-            return responseBuilder
-                .speak(`Sorry, I couldn't find any cards named ${query}.`)
-                .getResponse();
+        if(!locale.startsWith("en")){
+            fullQuery +=  '&include_multilingual=true';
         }
-        else if(cards.length === 1){
-            return Renderer
+        
+        console.log(`🔍 Search query: ${fullQuery}`);
+        
+        var cards = await Api.searchCards(fullQuery);
+        
+        console.log(`🎴 Found ${cards.length} cards`)
+
+        var renderer = new Renderer(aplAvailable, locale);
+        
+        if(cards.length === 1){
+            return renderer
                 .renderCard(responseBuilder, cards[0], aplAvailable)
                 .getResponse();
         }
         else {
-            return Renderer
+            return renderer
                 .renderCards(responseBuilder, cards, aplAvailable)
                 .getResponse();
         }
     }
     catch(err){
+        console.log(`⛔️ Error in searchCards: ${JSON.stringify(err)} `)
+        
         return responseBuilder
-            .speak(`Sorry, I had trouble searching for ${query}.`)
+            .speak(strings.formatString(strings.noResults, query))
             .getResponse();
     }
 }
 
-async function getCard(cardId, responseBuilder, aplAvailable) {
+async function getCard(cardId, responseBuilder, aplAvailable, locale) {
     
     var card = await Api.getCard(cardId);
         
-    return Renderer
-        .renderCard(responseBuilder, card, aplAvailable)
+    return new Renderer(aplAvailable, locale)
+        .renderCard(responseBuilder, card, aplAvailable, locale)
         .getResponse();
 }
 
-async function getSpoilers(responseBuilder, aplAvailable){
+async function getSpoilers(responseBuilder, aplAvailable, locale){
     const query = "game%3Apaper+order%3Aspoiled";
     var cards = await Api.searchCards(query);
     
-    return Renderer
-            .renderCards(responseBuilder, cards.slice(0,5), aplAvailable)
+    return new Renderer(aplAvailable, locale)
+            .renderCards(responseBuilder, cards.slice(0,5))
             .getResponse();
 }
 const LaunchRequestHandler = {
@@ -59,13 +66,14 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
-        const speechText = 'Welcome, search for any Magic The Gathering card by saying <break strength="weak"/><emphasis level="strong">Find</emphasis><break strength="weak"/> and then the card name';
-        const repromptText = 'Say the word <break strength="weak"/><emphasis level="strong">Find</emphasis><break strength="weak"/> and then the card name you want to seach for.';
+        const locale = handlerInput.requestEnvelope.request.locale;
+        strings.setLanguage(locale);
+
         let responseBuilder = handlerInput.responseBuilder
-            .speak(speechText)
-            .reprompt(repromptText);
+            .speak(strings.welcome)
+            .reprompt(strings.welcomeReprompt);
             
-        Renderer.renderDisplay(responseBuilder, defaultUi, defaultUiData, aplAvailable);
+        new Renderer(aplAvailable, locale).renderDefaultDisplay(responseBuilder);
             
         return responseBuilder.getResponse();
     }
@@ -77,21 +85,27 @@ const SearchCardIntentHandler = {
     },
     async handle(handlerInput) {
         const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
+        const locale = handlerInput.requestEnvelope.request.locale;
         const query = handlerInput.requestEnvelope.request.intent.slots.card.value;
+        strings.setLanguage(locale);
         
-        return searchCards(query, handlerInput.responseBuilder, aplAvailable);
-    }
-};
-const SelectCardIntentHandler = {
-    canHandle(handlerInput) {
-        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && (handlerInput.requestEnvelope.request.intent.name === 'SelectCardIntent');
-    },
-    async handle(handlerInput) {
-        const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
-        const cardId = handlerInput.requestEnvelope.request.intent.slots.predefinedCard.resolutions.resolutionsPerAuthority.find(element => element.status.code === "ER_SUCCESS_MATCH").values[0].value.id;
+        let predefinedCard = null;
         
-        return getCard(cardId, handlerInput.responseBuilder, aplAvailable);
+        if (handlerInput.requestEnvelope.request.intent.slots.predefinedCard.resolutions){
+            predefinedCard = handlerInput.requestEnvelope.request.intent.slots.predefinedCard.resolutions.resolutionsPerAuthority.find(element => element.status.code === "ER_SUCCESS_MATCH").values[0].value.id || null;
+        } 
+        
+        console.log(`🎤 SearchCardIntent query: "${query}", card id: ${predefinedCard}`);
+        
+        if(predefinedCard){
+            return getCard(predefinedCard, handlerInput.responseBuilder, aplAvailable, locale);
+        } else if(query) {
+            return searchCards(query, handlerInput.responseBuilder, aplAvailable, locale);
+        } else {
+            return handlerInput.responseBuilder
+            .speak(strings.welcomeReprompt)
+            .getResponse();
+        }
     }
 };
 const TouchIntentHandler = {
@@ -103,9 +117,10 @@ const TouchIntentHandler = {
     },
     handle(handlerInput) {
         const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
+        const locale = handlerInput.requestEnvelope.request.locale;
         const cardId = handlerInput.requestEnvelope.request.arguments[2].id;
         
-        return getCard(cardId, handlerInput.responseBuilder, aplAvailable);
+        return getCard(cardId, handlerInput.responseBuilder, aplAvailable, locale);
     }
 };
 const SpoilersIntentHandler = {
@@ -115,8 +130,9 @@ const SpoilersIntentHandler = {
     },
     async handle(handlerInput) {
         const aplAvailable = handlerInput.requestEnvelope.context.System.device.supportedInterfaces.hasOwnProperty("Alexa.Presentation.APL");
+        const locale = handlerInput.requestEnvelope.request.locale;
         
-        return getSpoilers(handlerInput.responseBuilder, aplAvailable);
+        return getSpoilers(handlerInput.responseBuilder, aplAvailable, locale);
     }
 };
 const HelpIntentHandler = {
@@ -125,12 +141,12 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = 'Search for any Magic The Gathering card by saying <break strength="weak"/><emphasis level="strong">Find</emphasis><break strength="weak"/> and then the card name. ' + 
-            'You can also ask me for the latest spoilers.';
+        const locale = handlerInput.requestEnvelope.request.locale;
+        strings.setLanguage(locale);
 
         return handlerInput.responseBuilder
-            .speak(speechText)
-            .reprompt(speechText)
+            .speak(strings.help)
+            .reprompt(strings.help)
             .getResponse();
     }
 };
@@ -140,10 +156,14 @@ const FallbackIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.FallbackIntent';
     },
     handle(handlerInput) {
-        const speechText = `Sorry, I didn't catch that. Could you ask that again?`;
+        
+        console.log(`⚠️ Fallback handled: ${JSON.stringify(handlerInput)}`);
+        
+        const locale = handlerInput.requestEnvelope.request.locale;
+        strings.setLanguage(locale);
         
         return handlerInput.responseBuilder
-            .speak(speechText)
+            .speak(strings.fallback)
             .getResponse();
     }
 };
@@ -154,9 +174,12 @@ const CancelAndStopIntentHandler = {
                 || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
+        const locale = handlerInput.requestEnvelope.request.locale;
+        strings.setLanguage(locale);
+
         const speechText = 'Goodbye!';
         return handlerInput.responseBuilder
-            .speak(speechText)
+            .speak(strings.end)
             .getResponse();
     }
 };
@@ -197,12 +220,13 @@ const ErrorHandler = {
         return true;
     },
     handle(handlerInput, error) {
-        console.log(`~~~~ Error handled: ${error.message} ${JSON.stringify(handlerInput)}`);
-        const speechText = `Sorry, I couldn't understand what you said. Please try again.`; // ${error.message} ${JSON.stringify(handlerInput)}`;
+        console.log(`⛔️ Error handled: ${error.message} ${JSON.stringify(handlerInput)}`);
+        const locale = handlerInput.requestEnvelope.request.locale;
+        strings.setLanguage(locale);
 
         return handlerInput.responseBuilder
-            .speak(speechText)
-            .reprompt(speechText)
+            .speak(this.strings.error)
+            .reprompt(this.strings.error)
             .getResponse();
     }
 };
@@ -214,7 +238,6 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         SearchCardIntentHandler,
-        SelectCardIntentHandler,
         TouchIntentHandler,
         SpoilersIntentHandler,
         HelpIntentHandler,

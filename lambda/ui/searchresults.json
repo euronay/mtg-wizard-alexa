@@ -14,7 +14,7 @@
             "description": "Stock color for the light theme",
             "colors": {
                 "colorTextPrimary": "#151920",
-                "colorTextSecondary": "#82368c"
+                "colorTextSecondary": "#bea5cc"
             }
         },
         {
@@ -250,6 +250,31 @@
                     "width": "100%",
                     "items": [
                         {
+                            "type": "Image",
+                            "source": "${backgroundImage}",
+                            "scale": "best-fill",
+                            "width": "100vw",
+                            "height": "100vh",
+                            "position": "absolute",
+                            "filters": [
+                                {
+                                    "type": "Blur",
+                                    "radius": "5dp"
+                                }
+                            ],
+                            "overlayGradient": {
+                              "type": "linear",
+                              "colorRange": [
+                                "#000000ee",
+                                "#44444466"
+                              ],
+                              "inputRange": [
+                                0.5,
+                                1
+                              ]
+                            }
+                        },
+                        {
                             "type": "Sequence",
                             "scrollDirection": "horizontal",
                             "data": "${listData}",
@@ -290,7 +315,24 @@
                             "scale": "best-fill",
                             "width": "100vw",
                             "height": "100vh",
-                            "position": "absolute"
+                            "position": "absolute",
+                            "filters": [
+                                {
+                                    "type": "Blur",
+                                    "radius": "5dp"
+                                }
+                            ],
+                            "overlayGradient": {
+                              "type": "linear",
+                              "colorRange": [
+                                "#000000ee",
+                                "#44444466"
+                              ],
+                              "inputRange": [
+                                0.5,
+                                1
+                              ]
+                            }
                         },
                         {
                             "type": "AlexaHeader",
@@ -343,7 +385,7 @@
         ],
         "item": [
             {
-                "backgroundImage": "${payload.viewData.backgroundUrl}",
+                "backgroundImage": "${payload.viewData.backgroundImageUrl}",
                 "title": "${payload.viewData.title}",
                 "logo": "${payload.viewData.logoUrl}",
                 "hintText": "${payload.viewData.hintText}",

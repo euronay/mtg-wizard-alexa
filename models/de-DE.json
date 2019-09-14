@@ -32,42 +32,47 @@
             }
           ],
           "samples": [
-            "search",
-            "find",
-            "find magic card {predefinedCard}",
-            "card named {predefinedCard}",
-            "find me {predefinedCard}",
-            "find {predefinedCard}",
-            "search for {predefinedCard}",
+            "finde",
+            "suche",
+            "finde magic karte {predefinedCard}",
+            "karte namens {predefinedCard}",
+            "karte mit dem namen {predefinedCard}",
+            "finde mir {predefinedCard}",
+            "suche mir {predefinedCard}",
+            "finde {predefinedCard}",
+            "suche nach {predefinedCard}",
             "{predefinedCard}",
-            "find magic card {card}",
-            "card named {card}",
-            "find me {card}",
-            "find {card}",
-            "search for {card}"
+            "finde magic karte {card}",
+            "karte namens {card}",
+            "karte mit dem namen {card}",
+            "finde mir {card}",
+            "suche mir {card}",
+            "finde {card}",
+            "suche nach {card}"
           ]
         },
         {
           "name": "SpoilersIntent",
           "slots": [],
           "samples": [
-            "find preview cards",
-            "find spoilers",
-            "find latest spoilers",
-            "show me spoilers",
-            "show me the latest spoilers",
-            "show me upcoming magic cards",
-            "spoilers",
-            "latest previews",
-            "preview cards",
+            "finde preview karten",
+            "finde spoiler",
+            "finde die neuesten spoiler",
+            "zeig mir spoiler",
+            "zeig mir die neuesten spoiler",
+            "zeig mir neue magic karten",
+            "spoiler",
+            "neueste previews",
+            "preview karten",
             "previews",
-            "latest spoilers",
-            "show me the newest spoilers",
-            "show me the latest preview card",
-            "show me the latest preview cards",
-            "show me the newest preview card",
-            "show me the latest previews",
-            "find the latest spoilers"
+            "vorschau",
+            "neueste spoiler",
+            "zeig mir die neuesten spoiler",
+            "zeig mir die neueste preview karte",
+            "zeig mir die neuesten preview karten",
+            "zeig mir die neuestee preview karte",
+            "zeig mir die neuesten previews",
+            "finde die neuesten spoiler"
           ]
         },
         {
@@ -111,7 +116,7 @@
               "validations": [
                 {
                   "type": "hasEntityResolutionMatch",
-                  "prompt": "Slot.Validation.380024490269.510022862189.648575742563"
+                  "prompt": "Slot.Validation.1073198694367.300130257360.65372451903"
                 }
               ]
             }
@@ -126,15 +131,15 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Name a card and I'll try and find it"
+            "value": "Nenne eine Karte und ich versuche sie zu finden"
           },
           {
             "type": "PlainText",
-            "value": "What do you want to find?"
+            "value": "Was willst du denn finden?"
           },
           {
             "type": "PlainText",
-            "value": "What card are you looking for?"
+            "value": "Nach welcher Karte suchst du denn?"
           }
         ]
       },
@@ -143,11 +148,11 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "What card do you want to know about?"
+            "value": "Über welche Karte willst du etwas wissen?"
           },
           {
             "type": "PlainText",
-            "value": "Which card are you interested in?"
+            "value": "An welcher Karte bist du denn interessiert?"
           }
         ]
       },
@@ -156,16 +161,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Name the card you are interested in"
-          }
-        ]
-      },
-      {
-        "id": "Slot.Validation.380024490269.510022862189.648575742563",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Name the card you are interested in"
+            "value": "Nenne die Karte, die dich interessiert"
           }
         ]
       }

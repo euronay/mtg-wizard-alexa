@@ -12,6 +12,7 @@
     "ask-sdk-core": "^2.0.7",
     "ask-sdk-model": "^1.4.1",
     "aws-sdk": "^2.326.0",
-    "mtg-wizard-core": "^0.2.0"
+    "localized-strings": "^0.2.3",
+    "mtg-wizard-core": "^1.0.0-beta2"
   }
-  }
+}

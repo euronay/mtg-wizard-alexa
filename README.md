@@ -4,24 +4,34 @@
 Search for Magic: The Gathering™ cards from  Amazon Alexa. This is a port of *MTG Wizard* from the Google Assistant version [hosted here](https://github.com/euronay/mtg-wizard/).
 
 
-## Usage ##
+### Usage 
+
+Enable the skill from the [Amazon Skill Page](https://www.amazon.com/dp/B07W225C35)
+
 Open Amazon Alexa and say ```Talk to MTG Wizard```
 
 
-
-### Deployment ###
+### Deployment
 
 ```
 ask deploy
 ```
 
-### Contributors ❤️ ###
+
+
+### Contributors ❤️ 
 
 Huge thanks to the following contibutors:
 
-- [@richardbmx](https://github.com/richardbmx) for the MTG Wizard logo
+- [@richardbmx](https://github.com/richardbmx) for the MTG Wizard logo 🖼
 
-### Legal Stuff ###
+### Get Involved
+
+Raise an issue, submit a pull request!
+
+Join us on [Discord](https://discord.gg/7T2jaRN)
+
+### Legal Stuff 
 
 The literal and graphical information presented in this app about Magic: The Gathering, including card images, the mana symbols, and Oracle text, is copyright Wizards of the Coast, LLC, a subsidiary of Hasbro, Inc. This app is not produced by, endorsed by, supported by, or affiliated with Wizards of the Coast.
 

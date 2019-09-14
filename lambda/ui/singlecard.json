@@ -13,7 +13,7 @@
             "description": "Stock color for the light theme",
             "colors": {
                 "colorTextPrimary": "#151920",
-                "colorTextSecondary": "#82368c"
+                "colorTextSecondary": "#bea5cc"
             }
         },
         {
@@ -131,6 +131,31 @@
                 "height": "100vh",
                 "items": [
                     {
+                        "type": "Image",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "source": "${payload.viewData.backgroundImageUrl}",
+                        "scale": "best-fill",
+                        "position": "absolute",
+                        "filters": [
+                            {
+                                "type": "Blur",
+                                "radius": "5dp"
+                            }
+                        ],
+                        "overlayGradient": {
+                          "type": "linear",
+                          "colorRange": [
+                            "#000000ee",
+                            "#44444466"
+                          ],
+                          "inputRange": [
+                            0.5,
+                            1
+                          ]
+                        }
+                    },
+                    {
                         "type": "ScrollView",
                         "width": "100vw",
                         "height": "100vh",
@@ -160,12 +185,14 @@
                                     {
                                         "type": "Text",
                                         "style": "textStyleBody",
+                                        "textAlign": "center",
                                         "text": "${payload.viewData.name}"
                                     },
                                     {
                                         "type": "Text",
                                         "style": "textStylePrimary",
                                         "width": "70vw",
+                                        "textAlign": "center",
                                         "color": "@colorTextSecondary",
                                         "text": "${payload.viewData.set}"
                                     },
@@ -174,15 +201,24 @@
                                         "style": "textStylePrimary",
                                         "width": "70vw",
                                         "paddingBottom": "10dp",
+                                        "textAlign": "center",
                                         "text": "${payload.viewData.manaAndType}"
                                     },
                                     {
                                         "type": "Text",
                                         "text": "${payload.viewData.body}",
                                         "spacing": "@spacingSmall",
-                                        "paddingBottom": "20vh",
+                                        "paddingBottom": "2dp",
                                         "width": "70vw",
                                         "style": "textStylePrimary"
+                                    },
+                                    {
+                                        "type": "Text",
+                                        "text": "${payload.viewData.price}",
+                                        "style": "textStyleSecondary",
+                                        "paddingBottom": "10vh",
+                                        "textAlign": "center",
+                                        "color": "@colorTextSecondary"
                                     }
                                 ]
                             }
@@ -195,6 +231,31 @@
                 "width": "100vw",
                 "height": "100vh",
                 "items": [
+                    {
+                        "type": "Image",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "source": "${payload.viewData.backgroundImageUrl}",
+                        "scale": "best-fill",
+                        "position": "absolute",
+                        "filters": [
+                            {
+                                "type": "Blur",
+                                "radius": "5dp"
+                            }
+                        ],
+                        "overlayGradient": {
+                          "type": "linear",
+                          "colorRange": [
+                            "#000000ee",
+                            "#44444466"
+                          ],
+                          "inputRange": [
+                            0.5,
+                            1
+                          ]
+                        }
+                    },
                     {
                         "type": "AlexaHeader",
                         "headerTitle": "${payload.viewData.title}",
@@ -238,9 +299,16 @@
                                                 "type": "Text",
                                                 "text": "${payload.viewData.body}",
                                                 "spacing": "@spacingSmall",
-                                                "paddingTop": "40dp",
+                                                "paddingTop": "20dp",
                                                 "paddingRight": "70dp",
+                                                "paddingBottom": "20dp",
                                                 "style": "textStylePrimary"
+                                            },
+                                            {
+                                                "type": "Text",
+                                                "text": "${payload.viewData.price}",
+                                                "style": "textStyleSecondary",
+                                                "color": "@colorTextSecondary"
                                             }
                                         ]
                                     }
