@@ -84,8 +84,8 @@
       "locales": {
         "en-US": {
           "name": "MTG Wizard",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190914T203833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86399&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190914%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ef1cd264fe8cef8b3407dcbb38d06a982a0b8ddbf8aed800bfc40cf7d2fc7ba6",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190914T203833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190914%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=7e4984bdb8f2f70a7e15182124bd7e1ab947336f90945e0fdc088c70323c4dad",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190916T200027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190916%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0f68a6a8d3d95d58db2b6b1bd7eb56d9706feff04b5458d927940362069e7b5d",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190916T200027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190916%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb797aac8156c4cb5481dbceb7974529f11286ff6016a9eeba559cceb2341952",
           "summary": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "description": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "examplePhrases": [
@@ -104,8 +104,8 @@
         },
         "en-GB": {
           "name": "MTG Wizard",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190914T203833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190914%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=457f1cf2a7867c4545c8132ee9de979caec32960aad72fb9e2203917b14982ca",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190914T203833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190914%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=7e4984bdb8f2f70a7e15182124bd7e1ab947336f90945e0fdc088c70323c4dad",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190916T200027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190916%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0f68a6a8d3d95d58db2b6b1bd7eb56d9706feff04b5458d927940362069e7b5d",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190916T200027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190916%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb797aac8156c4cb5481dbceb7974529f11286ff6016a9eeba559cceb2341952",
           "summary": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "description": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "examplePhrases": [
@@ -124,8 +124,8 @@
         },
         "en-CA": {
           "name": "MTG Wizard",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190914T203833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190914%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=457f1cf2a7867c4545c8132ee9de979caec32960aad72fb9e2203917b14982ca",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190914T203833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190914%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=7e4984bdb8f2f70a7e15182124bd7e1ab947336f90945e0fdc088c70323c4dad",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190916T200027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190916%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0f68a6a8d3d95d58db2b6b1bd7eb56d9706feff04b5458d927940362069e7b5d",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190916T200027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190916%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb797aac8156c4cb5481dbceb7974529f11286ff6016a9eeba559cceb2341952",
           "summary": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "description": "MTG Wizard lets you find Magic The Gathering card details, images and prices",
           "examplePhrases": [
@@ -144,14 +144,14 @@
         },
         "de-DE": {
           "name": "MTG Wizard",
-          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190914T203833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190914%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=457f1cf2a7867c4545c8132ee9de979caec32960aad72fb9e2203917b14982ca",
-          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190914T203833Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190914%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=7e4984bdb8f2f70a7e15182124bd7e1ab947336f90945e0fdc088c70323c4dad",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ecb7/c277518976ce4ee09833d5843e067fe0/APP_ICON?versionId=_4zQOt9YteIdu1bp7VfeDylqiJwkBIpj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190916T200027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190916%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0f68a6a8d3d95d58db2b6b1bd7eb56d9706feff04b5458d927940362069e7b5d",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/9c0b/a08322f160c04921b97d660cc3d50b2d/APP_ICON_LARGE?versionId=ZaqZTUKIE2aoCHlC.EH9CNStlHcLLEpz&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190916T200027Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190916%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb797aac8156c4cb5481dbceb7974529f11286ff6016a9eeba559cceb2341952",
           "summary": "MTG Wizard sucht für dich nach Magic the Gathering Karten - sowohl Details, als auch Bilder und Preise!",
           "description": "MTG Wizard sucht für dich nach Magic the Gathering Karten - sowohl Details, als auch Bilder und Preise!",
           "examplePhrases": [
             "Alexa, starte MTG Wizard",
-            "Alexa, frage MTG Wizard nach \"Blitzschlag\"",
-            "Alexa, sage MTG Wizard, er soll nach \"Gegenzauber\" suchen"
+            "Alexa, frage MTG Wizard nach \"Blitzschlag\" finden",
+            "Alexa, frage MTG Wizard nach \"Gegenzauber\" suchen"
           ],
           "keywords": [
             "Magic",

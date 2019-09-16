@@ -32,6 +32,10 @@
             }
           ],
           "samples": [
+            "{predefinedCard} finden",
+            "{card} finden",
+            "{predefinedCard} suchen",
+            "{card} suchen",
             "finde",
             "suche",
             "finde magic karte {predefinedCard}",
@@ -84,8 +88,13 @@
         {
           "values": [
             {
+              "id": "7c78bec8-c911-418c-bec2-52bd1fc6dab0b",
               "name": {
-                "value": "SDFSD"
+                "value": "Serra-Engel",
+                "synonyms": [
+                  "Serra-Engel von Dominaria",
+                  "Serra-Engel von DOM"
+                ]
               }
             }
           ],
@@ -167,5 +176,5 @@
       }
     ]
   },
-  "version": "35"
+  "version": "14"
 }

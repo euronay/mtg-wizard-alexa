@@ -79,8 +79,13 @@
         {
           "values": [
             {
+              "id": "b56b9131-4f7e-4912-ba47-63ed82f21d1b",
               "name": {
-                "value": "SDFSD"
+                "value": "Serra Angel",
+                "synonyms": [
+                  "Serra Angel from Dominaria",
+                  "Serra Angel from DOM"
+                ]
               }
             }
           ],
@@ -171,5 +176,5 @@
       }
     ]
   },
-  "version": "35"
+  "version": "37"
 }

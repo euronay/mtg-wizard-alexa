@@ -24,6 +24,7 @@ ask deploy
 Huge thanks to the following contibutors:
 
 - [@richardbmx](https://github.com/richardbmx) for the MTG Wizard logo 🖼
+- [@TheOnlyHorizon](http://reddit.com/u/theonlyhorizon) for German translation 🇩🇪
 
 ### Get Involved
 
