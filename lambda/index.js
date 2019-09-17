@@ -104,6 +104,7 @@ const SearchCardIntentHandler = {
         } else {
             return handlerInput.responseBuilder
             .speak(strings.welcomeReprompt)
+            .reprompt(strings.fallback)
             .getResponse();
         }
     }
@@ -164,6 +165,7 @@ const FallbackIntentHandler = {
         
         return handlerInput.responseBuilder
             .speak(strings.fallback)
+            .reprompt(strings.error)
             .getResponse();
     }
 };

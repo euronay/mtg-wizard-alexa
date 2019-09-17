@@ -32,10 +32,8 @@
             }
           ],
           "samples": [
-            "{predefinedCard} finden",
-            "{card} finden",
-            "{predefinedCard} suchen",
-            "{card} suchen",
+            "finde die magic karte {card}",
+            "finde die magic karte {predefinedCard}",
             "finde",
             "suche",
             "finde magic karte {predefinedCard}",
@@ -88,7 +86,7 @@
         {
           "values": [
             {
-              "id": "7c78bec8-c911-418c-bec2-52bd1fc6dab0b",
+              "id": "7c78bec8-c911-418c-bec2-52bd1fc6dab0",
               "name": {
                 "value": "Serra-Engel",
                 "synonyms": [
@@ -176,5 +174,5 @@
       }
     ]
   },
-  "version": "14"
+  "version": "17"
 }
