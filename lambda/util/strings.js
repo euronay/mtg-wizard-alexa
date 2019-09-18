@@ -15,7 +15,7 @@ module.exports.indexStrings = new LocalizedStrings({
     de: {
         welcome: 'Willkommen, suche nach einer beliebigen Magic the Gathering Karte, indem du <break strength="weak"/><emphasis level="strong">finde</emphasis><break strength="weak"/>, gefolgt vom Namen der Karte sagst',
         welcomeReprompt: 'Sage einfach <break strength="weak"/><emphasis level="strong">finde</emphasis><break strength="weak"/> und dann den Namen der Karte, nach der du suchen willst.',
-        help: 'Suche nach einer beliebigen Magic the Gathering Karte, indem du <break strength="weak"/><emphasis level="strong">Find</emphasis><break strength="weak"/> gefolgt vom Namen der Karte sagst. ' +
+        help: 'Suche nach einer beliebigen Magic the Gathering Karte, indem du <break strength="weak"/><emphasis level="strong">Finde</emphasis><break strength="weak"/> gefolgt vom Namen der Karte sagst. ' +
             'Du kannst mich auch nach den neuesten Spoilern fragen. ' + 
             'Sollte kein deutscher Text vorhanden sein, werden dir die Karten auf Englisch vorgelesen.',
         noResults: 'Tut mir leid, ich konnte keine karte mit dem namen {0} finden.',
